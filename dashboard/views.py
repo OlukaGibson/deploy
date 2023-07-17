@@ -30,7 +30,7 @@ def index(request):
 
 @login_required
 def staff(request):
-    items = Profile.objects.select_related('user')
+    items = Profile.objects.all()
     # profile_items = Profile.objects.all()
     # user_items = User.objects.all()
     context = {
