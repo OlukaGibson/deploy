@@ -125,18 +125,28 @@ def reports_correction(request):
 @login_required
 def products(request):
     items = Stock.objects.all()
-    if request.method == 'POST' :
-        form = InventoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('products')
-    else:
-        form = InventoryForm()
+    invetory = []
+    available = []
+
+    for item in items:
+        result = item.stock_in - item.stock_out  # Perform the computation for each item
+        invetory.append(result)
+        avail = (result / item.stock_in) * 100
+        available.append(avail) 
+    #if request.method == 'POST' :
+    form = InventoryForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('products')
+    #else:
+    #    form = InventoryForm()
 
     
     context = {
         'items' : items,
         'form' : form,
+        'invetory': invetory,
+        'available': available,
     }
     return render(request,'dashboard/products.html', context)
 

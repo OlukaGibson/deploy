@@ -7,7 +7,7 @@ from crispy_forms.layout import Layout, Submit
 class InventoryForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ['item_name', 'stock_in', 'stock_out', 'inventory', 'units']
+        fields = ['item_name', 'stock_in', 'stock_out', 'units']
 
 #edits
 class EditForm(forms.ModelForm):
