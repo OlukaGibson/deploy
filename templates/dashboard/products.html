@@ -92,15 +92,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for item in items%}
+                        {% for item_data in items_with_values%}
                         <tr>
                             <th scope="row">{{forloop.counter}}</th>
-                            <td>{{ item.item_name }}</td>
-                            <td>{{ item.stock_in }}</td>
-                            <td>{{ item.stock_out }}</td>
-                            <td>{{ invetory.1}}</td>
-                            <td>{{ available.1 }}</td>
-                            <td>{{ item.units }}</td>
+                            <td>{{ item_data.item.item_name }}</td>
+                            <td>{{ item_data.item.stock_in }}</td>
+                            <td>{{ item_data.item.stock_out }}</td>
+                            <td>{{ item_data.invetory}}</td>
+                            <td>{{ item_data.available }}</td>
+                            <td>{{ item_data.item.units }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>
                             </td>
