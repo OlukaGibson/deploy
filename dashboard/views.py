@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Stock, Items, Casing, Production
+from .models import Stock, Casing, Production
 from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm
 from django.contrib.auth.models import User
 from user.models import Profile

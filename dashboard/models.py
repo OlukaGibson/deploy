@@ -14,10 +14,10 @@ PHASES = (
 )
 
 
-class Items (models.Model):
-    item_code = models.CharField(max_length=50,primary_key=True)
-    name = models.CharField(max_length=100)
-    despription = models.TextField(max_length=100)
+# class Items (models.Model):
+#     item_code = models.CharField(max_length=50,primary_key=True)
+#     name = models.CharField(max_length=100)
+#     despription = models.TextField(max_length=100)
 
 class Stock(models.Model):
     item_name = models.CharField(max_length=100,null=True)
@@ -26,8 +26,8 @@ class Stock(models.Model):
     inventory = models.PositiveIntegerField(null=True)
     units = models.CharField(max_length=100,null=True)
     edit_date = models.DateField(auto_now=True)
-    edited_by = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
-    item_code = models.ForeignKey(Items,on_delete=models.CASCADE, default=104)
+    #edited_by = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
+    #item_code = models.ForeignKey(Items,on_delete=models.CASCADE, default=104)
     
 
 class Casing (models.Model):
