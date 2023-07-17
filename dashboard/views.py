@@ -159,15 +159,15 @@ def metadata(request):
 @login_required
 def edit_inventory(request,pk):
     item = Stock.objects.get(id=pk)
-    if request.method == 'POST':
-        form = EditForm(request.POST)
-    else:
-        form = EditForm()
+    #if request.method == 'POST':
+    form = EditForm(request.POST or None)
+    #else:
+    #    form = EditForm()
     context = {
         'form' : form,
         'item' : item
     }
-    return render(request,'dashboard/edit_inventory.html',context)
+    return render(request,'dashboard/products.html',context)
 #production processes
 
 @login_required
