@@ -98,8 +98,16 @@
                             <td>{{ item.item_name }}</td>
                             <td>{{ item.stock_in }}</td>
                             <td>{{ item.stock_out }}</td>
-                            <td>{{ invetory.forloop.parentloop.counter }}</td>
-                            <td>{{ available.forloop.parentloop.counter }}</td>
+                            {% for invent in invetory %}
+                                {% if forloop.counter == counter %}
+                                <td>{{ invent.invetory }}</td>
+                                {% endif %}
+                            {% endfor %}
+                            {% for av in available %}
+                                {% if forloop.counter == counter %}
+                                <td>{{ av.available }}</td>
+                                {% endif %}
+                            {% endfor %}
                             <td>{{ item.units }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>
