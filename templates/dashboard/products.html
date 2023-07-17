@@ -92,22 +92,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for item in items%}
+                        {% for item in matching_items%}
                         <tr>
                             <th scope="row">{{forloop.counter}}</th>
                             <td>{{ item.item_name }}</td>
                             <td>{{ item.stock_in }}</td>
                             <td>{{ item.stock_out }}</td>
-                            {% for invent in invetory %}
-                                {% if forloop.counter == counter %}
-                                <td>{{ invent.invetory }}</td>
-                                {% endif %}
-                            {% endfor %}
-                            {% for av in available %}
-                                {% if forloop.counter == counter %}
-                                <td>{{ av.available }}</td>
-                                {% endif %}
-                            {% endfor %}
+                            <td>{{ item }}</td>
+                            <td>{{ item }}</td>
                             <td>{{ item.units }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>

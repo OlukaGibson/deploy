@@ -134,10 +134,13 @@ def products(request):
         avail = (result / item.stock_in) * 100
         available.append(avail) 
     #if request.method == 'POST' :
+    
     form = InventoryForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('products')
+    
+    matching_items = [item for counter, item in enumerate(items, start=1) if counter in invetory and counter in available]
     #else:
     #    form = InventoryForm()
 
@@ -147,6 +150,7 @@ def products(request):
         'form' : form,
         'invetory': invetory,
         'available': available,
+        'matching_items' : matching_items
     }
     return render(request,'dashboard/products.html', context)
 
