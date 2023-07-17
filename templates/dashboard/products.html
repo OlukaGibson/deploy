@@ -98,8 +98,8 @@
                             <td>{{ item.item_name }}</td>
                             <td>{{ item.stock_in }}</td>
                             <td>{{ item.stock_out }}</td>
-                            <td>{{ forloop.counter.invetory }}</td>
-                            <td>{{ forloop.counter.available }}</td>
+                            <td>{{ invetory[forloop.counter] }}</td>
+                            <td>{{ available[forloop.counter] }}</td>
                             <td>{{ item.units }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>
