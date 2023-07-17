@@ -160,7 +160,7 @@ def metadata(request):
 def edit_inventory(request,pk):
     item = Stock.objects.get(id=pk)
     if request.method == 'POST':
-        form = EditForm(request.POST)
+        form = EditForm(request.POST or None)
         if form.is_valid():
             form.save()
             return redirect('products')
