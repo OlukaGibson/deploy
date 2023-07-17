@@ -23,7 +23,7 @@ class Stock(models.Model):
     item_name = models.CharField(max_length=100,null=True)
     stock_in  = models.PositiveIntegerField(null=True)
     stock_out  = models.PositiveIntegerField(null=True)
-    inventory = models.PositiveIntegerField(null=True)
+    #inventory = models.PositiveIntegerField(null=True)
     units = models.CharField(max_length=100,null=True)
     edit_date = models.DateField(auto_now=True)
     #edited_by = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
