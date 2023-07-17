@@ -167,7 +167,7 @@ def edit_inventory(request,pk):
         'form' : form,
         'item' : item
     }
-    return render(request,'dashboard/products.html',context)
+    return render(request,'dashboard/edit_inventory.html',context)
 #production processes
 
 @login_required
