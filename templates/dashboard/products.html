@@ -69,8 +69,8 @@
                 <div class="border bg-white p-3">
                     <h4>Add Product</h4>
                     <hr>
-                    <form>
-                        
+                    <form method="POST">
+                        {% csrf_token %}
                         {{form|crispy}}
                         <input class="btn btn-success btn-block" type="submit" value="Add Product">
   
