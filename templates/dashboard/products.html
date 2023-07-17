@@ -98,8 +98,8 @@
                             <td>{{ item.item_name }}</td>
                             <td>{{ item.stock_in }}</td>
                             <td>{{ item.stock_out }}</td>
-                            <td>{{ invetory }}</td>
-                            <td>{{ available}}</td>
+                            <td>{{ invetory |get_item:item }}</td>
+                            <td>{{ available |get_item:item}}</td>
                             <td>{{ item.units }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>

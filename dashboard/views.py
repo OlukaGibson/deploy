@@ -134,7 +134,7 @@ def products(request):
         avail = (result / item.stock_in) * 100
         available.append(avail) 
     #if request.method == 'POST' :
-    form = InventoryForm(request.POST)
+    form = InventoryForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('products')
