@@ -92,14 +92,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for item in items%}
+                        {% for item, inventory, avail in items|zip:invetory|zip:available %}
                         <tr>
                             <th scope="row">{{forloop.counter}}</th>
                             <td>{{ item.item_name }}</td>
                             <td>{{ item.stock_in }}</td>
                             <td>{{ item.stock_out }}</td>
-                            <td>{{ invetory.forloop.counter0 }}</td>
-                            <td>{{ available.forloop.counter0 }}</td>
+                            <td>{{ invetory}}</td>
+                            <td>{{ available}}</td>
                             <td>{{ item.units }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>
