@@ -7,4 +7,4 @@ class DashboardConfig(AppConfig):
 
     def ready(self):
         # Import the template tags module
-        from . import templatetags 
+        from . import templatetags.inventory_tags
