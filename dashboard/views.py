@@ -125,13 +125,13 @@ def reports_correction(request):
 @login_required
 def products(request):
     items = Stock.objects.all()
-    if request.method == 'POST' :
-        form = InventoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('products')
-    else:
-        form = InventoryForm()
+    #if request.method == 'POST' :
+    form = InventoryForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('products')
+    #else:
+    #    form = InventoryForm()
 
     
     context = {
