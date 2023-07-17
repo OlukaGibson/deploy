@@ -140,26 +140,15 @@ def products(request):
         form.save()
         return redirect('products')
     
-    #matching_items = [item for counter, item in enumerate(items, start=1) if counter in invetory and counter in available]
-    #else:
-    #    form = InventoryForm()
+    final = zip(items, invetory, available)
 
-    items_with_values = []
-
-    for item, inventory, available in zip(items, invetory, available):
-        item_data = {
-            'item': item,
-            'inventory': inventory,
-            'available': available,
-        }
-        items_with_values.append(item_data)
     
     context = {
         'items' : items,
         'form' : form,
         'invetory': invetory,
         'available': available,
-        'items_with_values': items_with_values,
+        'final' : final
     }
     return render(request,'dashboard/products.html', context)
 
