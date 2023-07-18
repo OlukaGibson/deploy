@@ -129,9 +129,9 @@ def products(request):
     available = []
 
     for item in items:
-        result = item.stock_in - item.stock_out  # Perform the computation for each item
+        result = round(item.stock_in - item.stock_out, 0)  # Perform the computation for each item
         invetory.append(result)
-        avail = (result / item.stock_in) * 100
+        avail = round((result / item.stock_in) * 100, 0)
         available.append(avail) 
     #if request.method == 'POST' :
     
