@@ -156,21 +156,6 @@ def products(request):
 def metadata(request):
     return render(request,'dashboard/metadata.html')
 
-@login_required
-def edit_inventory(request,pk):
-    instance = get_object_or_404(Stock, id=pk)
-    if request.method == 'POST':
-        form = Stock(request.POST, instance=instance)
-        if form.is_valid():
-            form.save()
-            return redirect('products')
-    else:
-        form = Stock(instance=instance)
-
-    context = {
-        'form': form
-        }
-    return render(request,'dashboard/edit_inventory.html',context)
 # @login_required
 # def edit_inventory(request,pk):
 #     item = Stock.objects.get(id=pk)
@@ -186,7 +171,22 @@ def edit_inventory(request,pk):
 #         'item' : item
 #     }
 #     return render(request,'dashboard/edit_inventory.html',context)
-# #production processes
+
+@login_required
+def edit_inventory(request,pk):
+    item = Stock.objects.get(id=pk)
+    if request.method == 'POST':
+        form = EditForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    else:
+        form = EditForm(instance=item)
+    context = {
+        'form' : form
+    }
+    return render(request,'dashboard/edit_inventory.html',context)
+
 
 @login_required
 def casing(request):
