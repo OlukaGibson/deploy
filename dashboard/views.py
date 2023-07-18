@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404,
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Stock, Casing, Production
@@ -156,22 +156,41 @@ def products(request):
 def metadata(request):
     return render(request,'dashboard/metadata.html')
 
+# @login_required
+# def edit_inventory(request,pk):
+#     item = Stock.objects.get(id=pk)
+#     #if request.method == 'POST':
+#     form = EditForm()
+#     if form.is_valid():
+#         form.save()
+#         return redirect('products')
+#     # else:
+#     #     form = EditForm()
+#     context = {
+#         'form' : form,
+#         'item' : item
+#     }
+#     return render(request,'dashboard/edit_inventory.html',context)
+# #production processes
+
 @login_required
 def edit_inventory(request,pk):
-    item = Stock.objects.get(id=pk)
-    #if request.method == 'POST':
-    form = EditForm()
-    if form.is_valid():
-        form.save()
-        return redirect('products')
-    # else:
-    #     form = EditForm()
+    instance = get_object_or_404(Stock, id=pk)
+    if request.method == 'POST':
+        form = EditForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('products')
+    else:
+        form = EditForm(instance=instance)
+
     context = {
         'form' : form,
-        'item' : item
     }
+
     return render(request,'dashboard/edit_inventory.html',context)
-#production processes
+
+    
 
 @login_required
 def casing(request):
