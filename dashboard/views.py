@@ -183,7 +183,8 @@ def edit_inventory(request,pk):
     else:
         form = EditForm(instance=item)
     context = {
-        'form' : form
+        'form' : form,
+        'item' : item
     }
     return render(request,'dashboard/edit_inventory.html',context)
 
