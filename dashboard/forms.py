@@ -20,6 +20,7 @@ class CasingForm(forms.ModelForm):
     class Meta:
         model = Casing
         fields = ['batch_number', 'device_name', 'quantity', 'date_start', 'detail']
+        widgets = {'date_start': forms.DateInput(attrs={'type': 'date'})}
 
 class TheForm(forms.ModelForm):
     class Meta:
