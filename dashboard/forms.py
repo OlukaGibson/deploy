@@ -25,6 +25,7 @@ class THTForm(forms.ModelForm):
     class Meta:
         model = Production
         fields = ['batch_number','phase', 'quantity_in', 'quantity_out','detail']
+        labels = {'quantity_in': 'Target'}
 
 
 class MyForm(forms.Form):
