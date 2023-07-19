@@ -247,30 +247,16 @@ def phase2_smt(request):
 
 @login_required
 def phase3_tunning(request):
-    # items = Casing.objects.all()
-    # if request.method == 'POST' :
-    #     form = CasingForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('casing')
-    # else:
-    #     form = CasingForm()
-
-    # context = {
-    #     'items' : items,
-    #     'form' : form,
-    # }
-    # return render(request,'dashboard/casing.html', context)
     phase = "tunning"
     items = Production.objects.raw('SELECT * FROM dashboard_production WHERE phase = %s',[phase])
     # items = Production.objects.all()
-    #if request.method == 'POST' :
-    form = THTForm()
-    if form.is_valid():
-        form.save()
-        return redirect('phase3_tunning')
-    # else:
-    #     form = THTForm()
+    if request.method == 'POST' :
+        form = THTForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('phase3_tunning')
+    else:
+        form = THTForm()
 
     context = {
         'items' : items,
