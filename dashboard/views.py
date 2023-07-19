@@ -215,16 +215,14 @@ def phase1_tht(request):
     phase = "THT"
     items = Production.objects.raw('SELECT * FROM dashboard_production WHERE phase = %s',[phase])
     #items = Production.objects.all()
-    # if request.method == 'POST' :
-    #     form = THTForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('phase1_tht')
-    # else:
-    #     form = THTForm()
+    if request.method == 'POST' :
+        form = THTForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('phase1_tht')
+    else:
+        form = THTForm()
 
-    form = THTForm(request.POST or None)
-    form.save()
     context = {
         'items' : items,
         'form' : form,
