@@ -21,11 +21,16 @@ class CasingForm(forms.ModelForm):
         model = Casing
         fields = ['batch_number', 'device_name', 'quantity', 'date_start', 'detail']
 
-class THTForm(forms.ModelForm):
+class TheForm(forms.ModelForm):
     class Meta:
         model = Production
         fields = ['batch_number','phase', 'quantity_in', 'quantity_out','detail']
         labels = {'quantity_in': 'Target'}
+
+class THTForm(forms.ModelForm):
+    class Meta:
+        model = Production
+        fields = ['batch_number','phase', 'quantity_in', 'quantity_out','detail']
 
 
 class MyForm(forms.Form):

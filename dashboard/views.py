@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Stock, Casing, Production
-from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm
+from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm, TheForm
 from django.contrib.auth.models import User
 from user.models import Profile
 from django.db.models import Avg
@@ -235,7 +235,7 @@ def phase2_smt(request):
     items = Production.objects.raw('SELECT * FROM dashboard_production WHERE phase = %s',[phase])
     #items = Production.objects.all()
     if request.method == 'POST' :
-        form = THTForm(request.POST)
+        form = TheForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('phase2_smt')
