@@ -124,7 +124,7 @@ def reports_correction(request):
 
 @login_required
 def products(request):
-    items = Stock.objects.all()
+    items = Stock.objects.all().order_by('-edit_date')
     invetory = []
     available = []
 
