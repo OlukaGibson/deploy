@@ -131,7 +131,10 @@ def products(request):
     for item in items:
         result = round(item.stock_in - item.stock_out, 0)  # Perform the computation for each item
         invetory.append(result)
-        avail = round((result / item.stock_in) * 100, 0)
+        if item.stock_in == 0:
+            avail = 0.0
+        else:
+            avail = round((result / item.stock_in) * 100, 0)
         available.append(avail) 
     #if request.method == 'POST' :
     
