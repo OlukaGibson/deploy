@@ -226,7 +226,7 @@ def edit_phase2_smt(request,pk):
 
 @login_required
 def casing(request):
-    items = Casing.objects.all().order_by('-edit_date')
+    items = Casing.objects.all()
     if request.method == 'POST' :
         form = CasingForm(request.POST)
         if form.is_valid():
