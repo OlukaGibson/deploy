@@ -208,23 +208,6 @@ def edit_casing(request,pk):
     return render(request,'dashboard/edit_casing.html',context)
 
 @login_required
-def edit_phase2_smt(request,pk):
-    item = Production.objects.get(id=pk)
-    if request.method == 'POST':
-        form = THTForm(request.POST, instance=item)
-        if form.is_valid():
-            form.save()
-            return redirect('phase2_smt')
-    else:
-        form = THTForm(instance=item)
-    context = {
-        'form' : form,
-        'item' : item,
-    }
-    return render(request,'dashboard/edit_phase2_smt.html',context)
-
-
-@login_required
 def casing(request):
     items = Casing.objects.all()
     if request.method == 'POST' :
@@ -279,6 +262,26 @@ def phase2_smt(request):
         'form' : form,
     }
     return render(request,'dashboard/phase2_smt.html', context)
+
+
+@login_required
+def edit_phase2_smt(request,pk):
+    item = Production.objects.get(id=pk)
+    if item.phase == 'SMT':
+        if request.method == 'POST':
+            form = THTForm(request.POST, instance=item)
+            if form.is_valid():
+                form.save()
+                return redirect('phase2_smt')
+        else:
+            form = THTForm(instance=item)
+    else:
+        return redirect('index')
+    context = {
+        'form' : form,
+        'item' : item,
+    }
+    return render(request,'dashboard/edit_phase2_smt.html',context)
 
 @login_required
 def phase3_tunning(request):
