@@ -87,7 +87,6 @@
                             <th scope="col">Quantity</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">Detial</th>
-                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,9 +98,6 @@
                             <td>{{ item.quantity }}</td>
                             <td>{{ item.date_start }}</td>
                             <td>{{ item.detail }}</td>
-                            <td>
-                                <a class="btn btn-primary btn-sm" href="{% url 'edit_inventory'  item.id%}">Edit</a>
-                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
