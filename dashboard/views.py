@@ -209,7 +209,7 @@ def edit_casing(request,pk):
 
 @login_required
 def edit_phase2_smt(request,pk):
-    item = Production.objects.get(id=pk).order_by('-edit_date')
+    item = Production.objects.get(id=pk)
     if request.method == 'POST':
         form = THTForm(request.POST, instance=item)
         if form.is_valid():
