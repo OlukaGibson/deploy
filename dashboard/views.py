@@ -267,16 +267,28 @@ def phase2_smt(request):
 @login_required
 def edit_phase2_smt(request,pk):
     item = Production.objects.get(id=pk)
-    if item.phase == 'SMT':
-        if request.method == 'POST':
-            form = THTForm(request.POST, instance=item)
-            if form.is_valid():
-                form.save()
+    if request.method == 'POST':
+        form = THTForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            if item.phase == 'SMT':
                 return redirect('phase2_smt')
-        else:
-            form = THTForm(instance=item)
+            elif item.phase == 'THT':
+                return redirect('phase1_tht')
+            elif item.phase == 'tunning':
+                return redirect('phase3_tunning')
+            elif item.phase == 'monitor assembly':
+                return redirect('monitor_assembly')
+            elif item.phase == 'communication config':
+                return redirect('communication_config')
+            elif item.phase == 'analysis':
+                return redirect('analysis')
+            elif item.phase == 'correction':
+                return redirect('correction')
+            else:
+                return redirect('index')
     else:
-        return redirect('index')
+        form = THTForm(instance=item)
     context = {
         'form' : form,
         'item' : item,

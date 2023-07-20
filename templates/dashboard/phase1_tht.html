@@ -87,6 +87,7 @@
                             <th scope="col">Quantity Out</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">Detail</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -98,6 +99,9 @@
                             <td>{{ item.quantity_out }}</td>
                             <td>{{ item.date_start }}</td>
                             <td>{{ item.detail }}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{% url 'edit_phase2_smt'  item.id%}">Edit</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
