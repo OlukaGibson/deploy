@@ -264,7 +264,7 @@ def phase1_tht(request):
 @login_required
 def phase2_smt(request):
     phase = "SMT"
-    items = Production.objects.raw('SELECT * FROM dashboard_production WHERE phase = %s',[phase]).order_by('-edit_date')
+    items = Production.objects.raw('SELECT * FROM dashboard_production WHERE phase = %s',[phase])
     #items = Production.objects.all()
     if request.method == 'POST' :
         form = TheForm(request.POST)
