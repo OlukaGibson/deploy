@@ -210,7 +210,7 @@ def edit_casing(request,pk):
 
 @login_required
 def casing(request):
-    items = Casing.objects.all()
+    items = Casing.objects.all().order_by('-edit_date')
     if request.method == 'POST' :
         form = CasingForm(request.POST)
         if form.is_valid():
