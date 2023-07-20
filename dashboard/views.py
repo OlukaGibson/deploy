@@ -191,6 +191,22 @@ def edit_inventory(request,pk):
     }
     return render(request,'dashboard/edit_inventory.html',context)
 
+@login_required
+def edit_casing(request,pk):
+    item = Casing.objects.get(id=pk)
+    if request.method == 'POST':
+        form = CasingForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('casing')
+    else:
+        form = CasingForm(instance=item)
+    context = {
+        'form' : form,
+        'item' : item,
+    }
+    return render(request,'dashboard/edit_casing.html',context)
+
 
 @login_required
 def casing(request):

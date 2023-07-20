@@ -18,4 +18,5 @@ urlpatterns = [
     path('analysis/',  views.analysis, name='analysis'),
     path('correction/',  views.correction, name='correction'),
     path('edit_inventory/<int:pk>/',  views.edit_inventory, name='edit_inventory'),
+    path('edit_casing/<int:pk>/',  views.edit_casing, name='edit_casing'),
 ]
