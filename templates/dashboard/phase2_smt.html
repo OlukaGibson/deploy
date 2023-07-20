@@ -87,17 +87,21 @@
                             <th scope="col">Quantity Out</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">Detial</th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for item in items %}
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{forloop.counter}}</th>
                             <td>{{ item.batch_number }}</td>
                             <td>{{ item.quantity_in }}</td>
                             <td>{{ item.quantity_out }}</td>
                             <td>{{ item.date_start }}</td>
                             <td>{{ item.detail }}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" href="{% url 'edit_phase2_smt'  item.id%}">Edit</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

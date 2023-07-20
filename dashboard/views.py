@@ -207,6 +207,22 @@ def edit_casing(request,pk):
     }
     return render(request,'dashboard/edit_casing.html',context)
 
+@login_required
+def edit_phase2_smt(request,pk):
+    item = Production.objects.get(id=pk).order_by('-edit_date')
+    if request.method == 'POST':
+        form = THTForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('phase2_smt')
+    else:
+        form = THTForm(instance=item)
+    context = {
+        'form' : form,
+        'item' : item,
+    }
+    return render(request,'dashboard/edit_phase2_smt.html',context)
+
 
 @login_required
 def casing(request):
