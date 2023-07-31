@@ -1,3 +1,7 @@
+
+import csv
+import xlwt
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -394,3 +398,18 @@ def correction(request):
 def phases(request, option):
     context = {'option': option}
     return render(request, 'phases.html', context)
+
+@login_required
+def export_stock_to_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="stock.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Units', 'Edit Date'])
+
+    stocks = Stock.objects.all()
+
+    for stock in stocks:
+        writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, stock.units, stock.edit_date])
+
+    return response

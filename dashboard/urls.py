@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+
 urlpatterns = [
     path('index/',  views.index, name='index'),
     path('staff/',  views.staff, name='staff'),
@@ -20,5 +21,5 @@ urlpatterns = [
     path('edit_inventory/<int:pk>/',  views.edit_inventory, name='edit_inventory'),
     path('edit_casing/<int:pk>/',  views.edit_casing, name='edit_casing'),
     path('edit_phase2_smt/<int:pk>/',  views.edit_phase2_smt, name='edit_phase2_smt'),
-    # path('export/', views.export_to_excel, name='export_to_excel'),
+     path('export_stock/', views.export_stock_to_csv, name='export_stock'),
 ]
