@@ -79,8 +79,8 @@
             </div>
             <div class="col-md-8">
                 <div class="col-md-8"></div>
-                <div class="col-md-8">
-                    <form action="{% url 'export_stock' %}" method="post">
+                <div class="col-md-3">
+                    <form class="btn btn-info" action="{% url 'export_stock' %}" method="post">
                         {% csrf_token %}
                         <input type="submit" value="Export to CSV">
                     </form>
