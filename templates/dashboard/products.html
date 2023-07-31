@@ -79,6 +79,12 @@
             </div>
             <div class="col-md-8">
                 <div class="col-md-8"></div>
+                <div class="col-md-8">
+                    <form action="{% url 'export_stock' %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Export to CSV">
+                    </form>
+                </div>
                 <table class="table bg-white">
                     <thead class="bg-primary">
                         <tr class="text-white">
