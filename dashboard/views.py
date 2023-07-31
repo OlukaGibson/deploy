@@ -413,6 +413,6 @@ def export_stock_to_csv(request):
         if stock.stock_in ==0:
             writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) , 0, stock.units, stock.edit_date])
         else:
-            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, round((stock.stock_in - stock.stock_out) ,(((stock.stock_in - stock.stock_out)/stock.stock_in) * 100),1),stock.units, stock.edit_date])
+            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, round(((stock.stock_in - stock.stock_out) ,(((stock.stock_in - stock.stock_out)/stock.stock_in) * 100)),1),stock.units, stock.edit_date])
 
     return response
