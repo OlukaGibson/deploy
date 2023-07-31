@@ -405,11 +405,14 @@ def export_stock_to_csv(request):
     response['Content-Disposition'] = 'attachment; filename="stock.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Units', 'Edit Date'])
+    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Edit Date'])
 
     stocks = Stock.objects.all()
 
     for stock in stocks:
-        writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, stock.units, stock.edit_date])
+        if stock.stock_in ==0:
+            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) , 0, stock.units, stock.edit_date])
+        else:
+            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) ,(((stock.stock_in - stock.stock_out)/stock.stock_out) * 100),stock.units, stock.edit_date])
 
     return response
