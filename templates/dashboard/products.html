@@ -82,7 +82,7 @@
                 <div class="col-md-3">
                     <form class="btn btn-info" action="{% url 'export_stock' %}" method="post">
                         {% csrf_token %}
-                        <input type="submit" value="Export to CSV">
+                        <input type="submit" class="btn btn-info" value="Export to CSV">
                     </form>
                 </div>
                 <table class="table bg-white">
