@@ -7,13 +7,16 @@ from crispy_forms.layout import Layout, Submit
 class InventoryForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ['item_name', 'stock_in', 'stock_out', 'units']
+        fields = ['item_name', 'stock_in', 'stock_in_date', 'stock_out', 'units']
+        widgets = {'stock_in_date': forms.DateInput(attrs={'type': 'date'})}
 
 #edits
 class EditForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ['stock_in', 'stock_out']
+        #editted here
+        fields = ['stock_in', 'stock_in_date', 'stock_out']
+        widgets = {'stock_in_date': forms.DateInput(attrs={'type': 'date'})}
 
 
 class CasingForm(forms.ModelForm):

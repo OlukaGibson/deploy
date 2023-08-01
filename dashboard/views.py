@@ -143,9 +143,10 @@ def products(request):
     #if request.method == 'POST' :
     
     form = InventoryForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('products')
+    #if form.is_valid():
+    #editted here
+    form.save()
+    return redirect('products')
     
     final = zip(items, invetory, available)
 
@@ -162,22 +163,6 @@ def products(request):
 @login_required
 def metadata(request):
     return render(request,'dashboard/metadata.html')
-
-# @login_required
-# def edit_inventory(request,pk):
-#     item = Stock.objects.get(id=pk)
-#     #if request.method == 'POST':
-#     form = EditForm()
-#     if form.is_valid():
-#         form.save()
-#         return redirect('products')
-#     # else:
-#     #     form = EditForm()
-#     context = {
-#         'form' : form,
-#         'item' : item
-#     }
-#     return render(request,'dashboard/edit_inventory.html',context)
 
 @login_required
 def edit_inventory(request,pk):

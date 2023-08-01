@@ -23,11 +23,10 @@ class Stock(models.Model):
     item_name = models.CharField(max_length=100,null=True)
     stock_in  = models.PositiveIntegerField(null=True)
     stock_out  = models.PositiveIntegerField(null=True)
-    #inventory = models.PositiveIntegerField(null=True)
     units = models.CharField(max_length=100,null=True)
-    edit_date = models.DateField(auto_now=True)
-    #edited_by = models.ForeignKey(User,on_delete=models.CASCADE, default=1)
-    #item_code = models.ForeignKey(Items,on_delete=models.CASCADE, default=104)
+    #editted here
+    stock_in_date = models.DateField(default="2023-07-13", null=True)
+    stock_out_date = models.DateField(auto_now=True)
     
 
 class Casing (models.Model):
