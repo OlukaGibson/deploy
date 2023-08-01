@@ -133,7 +133,7 @@ def products(request):
     available = []
 
     for item in items:
-        result = item.stock_in - item.stock_out#round(item.stock_in - item.stock_out, 0)   Perform the computation for each item
+        result = 0#round(item.stock_in - item.stock_out, 0)  # Perform the computation for each item
         invetory.append(result)
         if item.stock_in == 0:
             avail = 0.0
