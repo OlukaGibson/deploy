@@ -177,7 +177,7 @@ def details(request,pk):
         
         if dispenseForm.is_valid():
             dispenseForm.save()
-            return redirect('details')
+            return redirect('products')
         
     else:
         newStockForm = NewStockForm(instance=item)
