@@ -143,10 +143,10 @@ def products(request):
     #if request.method == 'POST' :
     
     form = InventoryForm(request.POST or None)
-    #if form.is_valid():
+    if form.is_valid():
     #editted here
-    form.save()
-    return redirect('products')
+        form.save()
+        return redirect('products')
     
     final = zip(items, invetory, available)
 
