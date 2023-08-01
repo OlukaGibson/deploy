@@ -6,42 +6,31 @@
         <div class="col-md-6 offset-md-3">
             <div class="card">
                 <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0">Item Details</h3>
+                    <h3 class="mb-0">{{item.item_name}} Details</h3>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="item_name">Item Name:</label>
-                        <p class="form-control-static">{{item.item_name}}</p>
+                        <label for="item_name">Item Name : {{item.item_name}}</label>
                     </div>
                     <div class="form-group">
-                        <label for="stock_in">Stock In:</label>
-                        <p class="form-control-static">{{item.stock_in}}</p>
+                        <label for="stock_in">Stock In : {{item.stock_in}}</label>
                     </div>
                     <div class="form-group">
-                        <label for="stock_out">Stock Out:</label>
-                        <p class="form-control-static">{{item.stock_out}}</p>
+                        <label for="stock_out">Stock Out : {{item.stock_out}}</label>
                     </div>
                     <div class="form-group">
-                        <label for="stock_in_date">Stock In Date:</label>
-                        <p class="form-control-static">{{item.stock_in_date}}</p>
+                        <label for="stock_in_date">Stock In Date : {{item.stock_in_date}}</label>
                     </div>
                     <div class="form-group">
-                        <label for="units">Units:</label>
-                        <p class="form-control-static">{{item.units}}</p>
+                        <label for="units">Units : {{item.units}}</label>
                     </div>
-                    <div class="card my-card shadow text-center p-3">
-                        Item Name : {{item.item_name}}
-                        Stock In : {{item.stock_in}}
-                        Stock Out : {{item.stock_out}}
-                        Stock In Date: {{item.stock_in_date}}
-                        Units : {{item.units}}
                         <div>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popupFormModal1">
-                                Open Popup Form
+                                New Stock
                             </button>
                         
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#popupFormModal2">
-                                Open Popup Form
+                                Dispence
                             </button>
                         
                             <!-- The Modal -->
@@ -94,8 +83,6 @@
                                     </div>
                                 </div>
                         </div>
-                    </div>
-
                 </div>
             </div>
         </div>
