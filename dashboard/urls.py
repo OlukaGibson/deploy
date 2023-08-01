@@ -21,5 +21,6 @@ urlpatterns = [
     path('edit_inventory/<int:pk>/',  views.edit_inventory, name='edit_inventory'),
     path('edit_casing/<int:pk>/',  views.edit_casing, name='edit_casing'),
     path('edit_phase2_smt/<int:pk>/',  views.edit_phase2_smt, name='edit_phase2_smt'),
-     path('export_stock/', views.export_stock_to_csv, name='export_stock'),
+    path('export_stock/', views.export_stock_to_csv, name='export_stock'),
+    path('details/<int:pk>/',  views.details, name='details'),
 ]

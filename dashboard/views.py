@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Stock, Casing, Production
-from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm, TheForm
+from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm, TheForm, NewStockForm, DispenseForm
 from django.contrib.auth.models import User
 from user.models import Profile
 from django.db.models import Avg
@@ -163,6 +163,31 @@ def products(request):
 @login_required
 def metadata(request):
     return render(request,'dashboard/metadata.html')
+
+
+@login_required
+def details(request,pk):
+    item = Stock.objects.get(id=pk)
+    if request.method == 'POST':
+        newStockForm = NewStockForm(request.POST, instance=item)
+        dispenseForm = DispenseForm(request.POST, instance=item)
+        if newStockForm.is_valid():
+            newStockForm.save()
+            return redirect('details')
+        
+        if dispenseForm.is_valid():
+            dispenseForm.save()
+            return redirect('details')
+        
+    else:
+        newStockForm = NewStockForm(instance=item)
+        dispenseForm = DispenseForm(instance=item)
+    context = {
+        'newStockForm' : newStockForm,
+        'dispenseForm' : dispenseForm,
+        'item' : item
+    }
+    return render(request,'dashboard/details.html',context)
 
 @login_required
 def edit_inventory(request,pk):

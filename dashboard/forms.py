@@ -10,7 +10,18 @@ class InventoryForm(forms.ModelForm):
         fields = ['item_name', 'stock_in', 'stock_in_date', 'stock_out', 'units']
         widgets = {'stock_in_date': forms.DateInput(attrs={'type': 'date'})}
 
-#edits
+class NewStockForm(forms.ModelForm):
+    class Meta:
+        model = Stock
+        fields = ['stock_in', 'stock_in_date']
+        widgets = {'stock_in_date': forms.DateInput(attrs={'type': 'date'})}
+
+class DispenseForm(forms.ModelForm):
+    class Meta:
+        model = Stock
+        fields = ['stock_out']
+
+
 class EditForm(forms.ModelForm):
     class Meta:
         model = Stock
