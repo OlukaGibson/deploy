@@ -95,7 +95,7 @@
                             <th scope="col">Inventory</th>
                             <th scope="col">Available(%)</th>
                             <th scope="col">Units</th>
-                            <th scope="col">Edit</th>
+                            <th scope="col">Details</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -109,7 +109,7 @@
                             <td>{{ available }}</td>
                             <td>{{ item.units }}</td>
                             <td>
-                                <a class="btn btn-primary btn-sm" href="{% url 'details'  item.id%}">Edit</a>
+                                <a class="btn btn-primary btn-sm" href="{% url 'details'  item.id%}">Details</a>
                             </td>
                         </tr>
                         {% endfor %}
