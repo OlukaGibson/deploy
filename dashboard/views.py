@@ -415,14 +415,14 @@ def export_stock_to_csv(request):
     response['Content-Disposition'] = 'attachment; filename="stock.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Stock In Date', 'Edit Date'])
+    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Stock In Date', 'Last Edit', 'Duration'])
 
     stocks = Stock.objects.all()
 
     for stock in stocks:
         if stock.stock_in ==0:
-            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) , 0, stock.units, stock.stock_in_date,stock.stock_out_date])
+            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) , 0, stock.units, stock.stock_in_date,stock.stock_out_date, stock.get_duration])
         else:
-            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) ,(((stock.stock_in - stock.stock_out)/stock.stock_in) * 100),stock.units, stock.stock_in_date, stock.stock_out_date])
+            writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) ,(((stock.stock_in - stock.stock_out)/stock.stock_in) * 100),stock.units, stock.stock_in_date, stock.stock_out_date, stock.get_duration])
 
     return response
