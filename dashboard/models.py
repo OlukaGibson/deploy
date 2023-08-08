@@ -32,7 +32,7 @@ class Stock(models.Model):
     def get_duration(self):
         if self.stock_in_date and self.stock_out_date:
             duration = self.stock_out_date - self.stock_in_date
-            return duration.days
+            return duration
         return None
 
 class Casing (models.Model):
