@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import timedelta
+
 
 # Create your models here.
 
@@ -28,12 +28,6 @@ class Stock(models.Model):
     #editted here
     stock_in_date = models.DateField(default="2023-07-13", null=True)
     stock_out_date = models.DateField(auto_now=True)
-    
-    def get_duration(self):
-        if self.stock_in_date and self.stock_out_date:
-            duration = self.stock_out_date - self.stock_in_date
-            return duration
-        return None
 
 class Casing (models.Model):
     batch_number = models.CharField(max_length=100,null=True)
