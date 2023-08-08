@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from simple_history.models import HistoricalRecords
 
 # Create your models here.
 
@@ -27,7 +28,7 @@ class Stock(models.Model):
     #editted here
     stock_in_date = models.DateField(default="2023-07-13", null=True)
     stock_out_date = models.DateField(auto_now=True)
-    
+    history = HistoricalRecords()
 
 class Casing (models.Model):
     batch_number = models.CharField(max_length=100,null=True)

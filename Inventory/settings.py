@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'crispy_forms',
     'crispy_bootstrap4',
+    'simple_history',
     #'import_export',
 ]
 
