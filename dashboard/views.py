@@ -415,7 +415,7 @@ def export_stock_to_csv(request):
     response['Content-Disposition'] = 'attachment; filename="stock.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Stock In Date', 'Last Edit', 'Duration'])
+    writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Stock In Date', 'Last Edit', 'Duration(Days)'])
 
     stocks = Stock.objects.all()
 
