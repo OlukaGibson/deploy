@@ -60,7 +60,7 @@ class Production (models.Model):
 
 
 @receiver(post_save, sender=Stock)
-def create_stock_history(sender, instance):
+def create_stock_history(sender, instance, **kwargs):
     StockHistory.objects.create(
         stock=instance,
         item_name=instance.item_name,
