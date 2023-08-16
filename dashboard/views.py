@@ -172,7 +172,7 @@ def details(request,pk):
         newStockForm = NewStockForm(request.POST, instance=item)
         dispenseForm = DispenseForm(request.POST, instance=item)
         if newStockForm.is_valid():
-            history = StockHistory.create(item_name=item.item_name,
+            history = StockHistory.objects.create(item_name=item.item_name,
                                   stock_in=item.stock_in,
                                   stock_out=item.stock_out,
                                   stock_in_date=item.stock_in_date,
@@ -182,7 +182,7 @@ def details(request,pk):
             return redirect('products')
         
         if dispenseForm.is_valid():
-            history = StockHistory.create(item_name=item.item_name,
+            history = StockHistory.objects.create(item_name=item.item_name,
                                   stock_in=item.stock_in,
                                   stock_out=item.stock_out,
                                   stock_in_date=item.stock_in_date,
