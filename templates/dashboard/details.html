@@ -33,11 +33,12 @@
                                 Dispense
                             </button>
                             
-                            <button type="button" class="btn btn-primary">
-                                <a href="{% url 'history'  item.id%}">
+                            <a href="{% url 'history' item.id %}">
+                                <button type="button" class="btn btn-primary">
                                     History
-                                </a>    
-                            </button>
+                                </button>
+                            </a>
+                            
                             <!-- <a class="btn btn-primary btn-sm" href="{% url 'history'  item.id%}">
                                 History
                             </a> -->
