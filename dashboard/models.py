@@ -34,7 +34,7 @@ class StockHistory(models.Model):
     stock_out = models.PositiveIntegerField(null=True)
     stock_in_date = models.DateField(null=True)
     stock_out_date = models.DateField(null=True)
-    history_date = models.DateTimeField(auto_now_add=True)
+    history_date = models.DateTimeField(auto_now=True)
 
 class Casing (models.Model):
     batch_number = models.CharField(max_length=100,null=True)
