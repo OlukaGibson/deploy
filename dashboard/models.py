@@ -28,13 +28,13 @@ class Stock(models.Model):
     stock_out_date = models.DateField(auto_now=True)
 
 class StockHistory(models.Model):
-    Stock = models.ForeignKey(Stock, on_delete=models.CASCADE)
+    stock = models.ForeignKey(Stock, on_delete=models.CASCADE, null=True)
     item_name = models.CharField(null=True)
     stock_in = models.PositiveIntegerField(null=True)
     stock_out = models.PositiveIntegerField(null=True)
     stock_in_date = models.DateField(null=True)
     stock_out_date = models.DateField(null=True)
-    history_date = models.DateTimeField(auto_now=True)
+    history_date = models.DateTimeField(auto_now=True, null=True)
 
 class Casing (models.Model):
     batch_number = models.CharField(max_length=100,null=True)
