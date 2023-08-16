@@ -434,7 +434,8 @@ def history(request,pk):
     context = {
         'history' : history,
     }
-    
+    # return HttpResponse(history)
+    # return HttpResponse(item.item_name)
     return render(request, 'dashboard/history.html', context)
 
 # @login_required
