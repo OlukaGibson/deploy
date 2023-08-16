@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <!-- <div class="col-md-4"></div> -->
+        <div class="col-md-4">
+            <table class="table bg-white">
+                <thead class="bg-primary">
+                    <tr class="text-white">
+                        <th scope="col">#</th>
+                        <th scope="col">StockIn</th>
+                        <th scope="col">StockOut</th>
+                        <th scope="col">Stock In Date</th>
+                        <th scope="col">Stock Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in history %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{ entry.stock_in }}</td>
+                        <td>{{ entry.stock_out }}</td>
+                        <td>{{ entry.stock_in_date }}</td>
+                        <td>{{ entry.stock_out_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock%}

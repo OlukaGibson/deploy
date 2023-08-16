@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import Stock, Casing, Production
+from .models import Stock, Casing, Production,StockHistory
 from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm, TheForm, NewStockForm, DispenseForm
 from django.contrib.auth.models import User
 from user.models import Profile
@@ -426,3 +426,36 @@ def export_stock_to_csv(request):
             writer.writerow([stock.item_name, stock.stock_in, stock.stock_out, (stock.stock_in - stock.stock_out) ,(((stock.stock_in - stock.stock_out)/stock.stock_in) * 100),stock.units, stock.stock_in_date, stock.stock_out_date, ((stock.stock_out_date - stock.stock_in_date).days)])
 
     return response
+
+@login_required
+def history(request,pk):
+    item = Stock.objects.get(id=pk)
+    history = StockHistory.objects.filter(item_name=item.item_name).order_by('-history_date')
+    context = {
+        'history' : history,
+    }
+    return render(request, 'history.html', context)
+
+# @login_required
+# def details(request,pk):
+#     item = Stock.objects.get(id=pk)
+#     if request.method == 'POST':
+#         newStockForm = NewStockForm(request.POST, instance=item)
+#         dispenseForm = DispenseForm(request.POST, instance=item)
+#         if newStockForm.is_valid():
+#             newStockForm.save()
+#             return redirect('products')
+        
+#         if dispenseForm.is_valid():
+#             dispenseForm.save()
+#             return redirect('products')
+        
+#     else:
+#         newStockForm = NewStockForm(instance=item)
+#         dispenseForm = DispenseForm(instance=item)
+#     context = {
+#         'newStockForm' : newStockForm,
+#         'dispenseForm' : dispenseForm,
+#         'item' : item
+#     }
+#     return render(request,'dashboard/details.html',context)

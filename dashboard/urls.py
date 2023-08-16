@@ -23,4 +23,5 @@ urlpatterns = [
     path('edit_phase2_smt/<int:pk>/',  views.edit_phase2_smt, name='edit_phase2_smt'),
     path('export_stock/', views.export_stock_to_csv, name='export_stock'),
     path('details/<int:pk>/',  views.details, name='details'),
+    path('history/<int:pk>/',  views.history, name='history'),
 ]
