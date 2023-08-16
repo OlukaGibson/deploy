@@ -78,8 +78,8 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="col-md-8"></div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-8"></div> -->
+                <div class="col-md-3 offset-md-6">
                     <form class="btn btn-info" action="{% url 'export_stock' %}" method="post">
                         {% csrf_token %}
                         <input type="submit" class="btn btn-info" value="Export to CSV">
