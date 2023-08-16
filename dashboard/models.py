@@ -1,8 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
+from django.contrib.auth.models import UserManager
 # Create your models here.
 
 PHASES = (
@@ -57,15 +54,3 @@ class Production (models.Model):
 
     def __str__(self):
         return str(self.date_end)
-
-
-@receiver(post_save, sender=Stock)
-def create_stock_history(sender, instance, **kwargs):
-    StockHistory.objects.create(
-        stock=instance,
-        item_name=instance.item_name,
-        stock_in=instance.stock_in,
-        stock_out=instance.stock_out,
-        stock_in_date=instance.stock_in_date,
-        stock_out_date=instance.stock_out_date,
-    )
