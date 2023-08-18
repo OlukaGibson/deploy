@@ -27,6 +27,9 @@ class Stock(models.Model):
     stock_in_date = models.DateField(default="2023-07-13", null=True)
     stock_out_date = models.DateField(auto_now=True)
 
+    def __str__(self):
+        return self.item_name
+
 class StockHistory(models.Model):
     stock = models.ForeignKey(Stock, on_delete=models.CASCADE, null=True)
     item_name = models.CharField(null=True)
@@ -36,12 +39,19 @@ class StockHistory(models.Model):
     stock_out_date = models.DateField(null=True)
     history_date = models.DateTimeField(auto_now=True, null=True)
 
+    def __str__(self):
+        return self.item_name
+
 class Casing (models.Model):
     batch_number = models.CharField(max_length=100,null=True)
     device_name = models.CharField(max_length=100,null=True)
     quantity = models.PositiveIntegerField(null=True)
     date_start = models.DateField(auto_now=False,auto_now_add=False,)
     detail = models.CharField(max_length=1000,null=True)
+
+
+    def __str__(self):
+        return self.batch_number
 
 class Production (models.Model):
     batch_number = models.CharField(max_length=100)
@@ -53,4 +63,4 @@ class Production (models.Model):
     detail = models.CharField(max_length=1000,null=True)
 
     def __str__(self):
-        return str(self.date_end)
+        return self.batch_number
