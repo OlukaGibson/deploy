@@ -429,7 +429,7 @@ def export_stock_to_csv(request):
     writer = csv.writer(response)
     writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Stock In Date', 'Last Edit', 'Duration(Days)'])
 
-    stocks = Stock.objects.all()
+    stocks = Stock.objects.all().order_by('-stock_out_date')
 
     for stock in stocks:
         if stock.stock_in ==0:
