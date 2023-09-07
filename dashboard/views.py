@@ -51,12 +51,12 @@ def reports_casing(request):
         if start_date and end_date:
             start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
             end_date = datetime.strptime(end_date, '%Y-%m-%d').date() + timedelta(days=1)  # Add 1 day to include the end date
-            data = Casing.objects.filter(date_end__range=(start_date, end_date)).values('date_end__week').annotate(sum=Sum('quantity'))
+            data = Casing.objects.filter(date_end__range=(start_date, end_date)).values('date_start__week').annotate(sum=Sum('quantity'))
             weekly_sum = []
 #            item = Production.objects.all()
 
             for entry in data:
-                week = entry['date_end__week']
+                week = entry['date_start__week']
                 sum = entry['sum']
                 weekly_sum.append({'week': week, 'sum': sum})
         else:
