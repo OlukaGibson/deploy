@@ -47,7 +47,7 @@ def update_selected_values(request):
             field_to_update = {field_to_edit: new_value}
             FirmwareUpdate.objects.filter(id__in=selected_ids).update(**field_to_update)
             
-    return redirect(request, 'display_firmware_update')
+    return redirect('display_firmware_update')
 
 # views.py
 from django.shortcuts import render, redirect
