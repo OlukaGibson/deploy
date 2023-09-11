@@ -8,6 +8,7 @@ urlpatterns = [
     path('api_url/<str:pk>/', views.api_url),
     path('display_firmware_update/', views.display_firmware_update, name='display_firmware_update'),
     path('update_selected_values/', views.update_selected_values, name='update_selected_values'),
+    path('add-firmware-update/', views.add_firmware_update, name='add-firmware-update'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

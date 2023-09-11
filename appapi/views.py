@@ -49,3 +49,18 @@ def update_selected_values(request):
             
     return redirect('display_firmware_update')
 
+# views.py
+from django.shortcuts import render, redirect
+from .forms import FirmwareUpdateForm  # Import the form
+
+def add_firmware_update(request):
+    if request.method == 'POST':
+        form = FirmwareUpdateForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('firmware-update-list')
+    else:
+        form = FirmwareUpdateForm()
+
+    return render(request, 'appapi/add_firmware_update.html', {'form': form})
