@@ -81,7 +81,7 @@
                         Group by SPV Value
                     </button>
                 </a>
-                <form method="post" action="{% url 'update-values' %}">
+                <form method="post" action="{% url 'update_selected_values' %}">
                     {% csrf_token %}
                     <button type="button" onclick="showEditForm('spvValue')">Edit SPV Value</button>
                     <button type="button" onclick="showEditForm('batteryValue')">Edit Battery Value</button>
