@@ -93,6 +93,7 @@
                             <th scope="col">Battery Value</th>
                             <th scope="col">Firmware Version</th>
                             <th scope="col">Description</th>
+                            <th scope="col">Select</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,6 +106,7 @@
                             <td>{{ firmware_update.batteryValue}}</td>
                             <td>{{ firmware_update.firmware }}</td>
                             <td>{{ firmware_update.description }}</td>
+                            <td><input type="checkbox" name="selected_updates" value="{{ firmware_update.id }}"></td>
                         </tr>
                         {% endfor %}
                         <tr>
