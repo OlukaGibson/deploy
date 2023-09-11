@@ -47,11 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dashboard.apps.DashboardConfig',
+    'rest_framework',
+    'appapi.apps.AppapiConfig',
     'user.apps.UserConfig',
     'crispy_forms',
     'crispy_bootstrap4',
     'simple_history',
     #'import_export',
+    
 ]
 
 MIDDLEWARE = [
@@ -104,6 +107,13 @@ DATABASES = {
     'default' : dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
@@ -154,6 +164,7 @@ STATIC_URL = 'static/'
 # MEDIA_ROOT = (BASE_DIR/'media/')
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = 'index'
 
@@ -164,12 +175,12 @@ LOGIN_URL = 'login'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_FROM = 'gibsonoluka7@gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'gibsonoluka7@gmail.com'
+EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD =config("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = 'gibsonoluka7@gmail.com'
-PASSWORD_RESET_TIMEOUT = 14400
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+PASSWORD_RESET_TIMEOUT = config("PASSWORD_RESET_TIMEOUT", default=3600, cast=int)
 
 
 # Default primary key field type
