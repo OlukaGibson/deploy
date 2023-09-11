@@ -41,13 +41,19 @@ def update_selected_values(request):
     if request.method == 'POST':
         selected_ids = request.POST.getlist('selected_updates')
         field_to_edit = request.POST.get('field_to_edit')
-        new_value = request.POST.get('new_value')
+        new_value = request.POST.get(field_to_edit)
 
         if selected_ids and field_to_edit in ('spvValue', 'batteryValue'):
             field_to_update = {field_to_edit: new_value}
             FirmwareUpdate.objects.filter(id__in=selected_ids).update(**field_to_update)
-            
-    return redirect('display_firmware_update')
+
+            # Respond with a success message (you can customize this JSON response)
+            response_data = {'message': f'{field_to_edit} updated successfully.'}
+            return JsonResponse(response_data)
+
+    # If the form submission is invalid or no updates were made, respond with an error message
+    response_data = {'error': 'Invalid form submission or no updates were made.'}
+    return JsonResponse(response_data, status=400)
 
 # views.py
 from django.shortcuts import render, redirect
