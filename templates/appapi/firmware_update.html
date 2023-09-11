@@ -83,8 +83,8 @@
                 </a>
                 <form method="post" action="{% url 'update_selected_values' %}">
                     {% csrf_token %}
-                    <button type="button" onclick="showEditForm('spvValue')">Edit SPV Value</button>
-                    <button type="button" onclick="showEditForm('batteryValue')">Edit Battery Value</button>
+                    <button type="button" class="btn btn-primary" onclick="showEditForm('spvValue')">Edit SPV Value</button>     !     
+                    <button type="button" class="btn btn-primary" onclick="showEditForm('batteryValue')">Edit Battery Value</button>
                 <table class="table bg-white">
                     <thead class="bg-primary">
                         <tr class="text-white">
