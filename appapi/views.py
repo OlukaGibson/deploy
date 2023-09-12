@@ -7,13 +7,35 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 
 
-@api_view(['GET',])
-def api_url(request,device_id):
-    if request.method == 'GET':
-        firmware_updates = FirmwareUpdate.objects.filter(device_id=device_id).order_by('-uploaded_at').first()
-        serializer = FirmwareUpdateSerializer(firmware_updates, many=True)
-        return JsonResponse(serializer.data, safe=False) 
+# @api_view(['GET',])
+# def api_url(request,device_id):
+#     if request.method == 'GET':
+#         firmware_updates = FirmwareUpdate.objects.filter(device_id=device_id).order_by('-uploaded_at').first()
+#         serializer = FirmwareUpdateSerializer(firmware_updates, many=True)
+#         return JsonResponse(serializer.data, safe=False) 
     
+# device_api/views.py
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from .models import DeviceData
+
+def get_device_data(request, device_id):
+    device_data = get_object_or_404(DeviceData, device_id=device_id)
+    
+    # Serialize the data into JSON
+    data = {
+        'version': device_data.version,
+        'description': device_data.description,
+        'spvValue': device_data.spvValue,
+        'batteryValue': device_data.batteryValue,
+        'firmware': device_data.firmware,
+        'device_id': device_data.device_id,
+        'uploaded_at': device_data.uploaded_at.strftime("%Y-%m-%d %H:%M:%S"),
+    }
+    
+    return JsonResponse(data)
+
+
 
 @login_required
 def display_firmware_update(request):
