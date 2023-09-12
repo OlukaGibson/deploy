@@ -32,8 +32,11 @@ def get_device_data(request, device_id):
         'device_id': device_data.device_id,
         'uploaded_at': device_data.uploaded_at.strftime("%Y-%m-%d %H:%M:%S"),
     }
+    info = {
+        'Success' : 'we didit',
+    }
     
-    return JsonResponse(data)
+    return JsonResponse(info)
 
 
 
