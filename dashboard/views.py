@@ -9,7 +9,7 @@ from .models import Stock, Casing, Production,StockHistory
 from .forms import InventoryForm, EditForm, CasingForm, THTForm,  MyForm, TheForm, NewStockForm, DispenseForm
 from django.contrib.auth.models import User
 from user.models import Profile
-from django.db.models import Avg, Sum
+from django.db.models import Avg
 from datetime import datetime, timedelta
 
 # Create your views here.
@@ -41,35 +41,6 @@ def staff(request):
         'items' : items
     }
     return render(request,'dashboard/staff.html',context)
-
-@login_required
-def reports_casing(request):
-    if request.method == 'POST':
-        start_date = request.POST.get('start_date')
-        end_date = request.POST.get('end_date')
-
-        if start_date and end_date:
-            start_date = datetime.strptime(start_date, '%Y-%m-%d').date()
-            end_date = datetime.strptime(end_date, '%Y-%m-%d').date() + timedelta(days=1)  # Add 1 day to include the end date
-            data = Casing.objects.filter(date_start__range=(start_date, end_date)).values('date_start__week').annotate(sum=Sum('quantity'))
-            weekly_sum = []
-#            item = Production.objects.all()
-
-            for entry in data:
-                week = entry['date_start__week']
-                sum = entry['sum']
-                weekly_sum.append({'week': week, 'sum': sum})
-        else:
-            weekly_sum = []
-    else:
-        weekly_sum = []
-
-    context = {
-        'weekly_averages': weekly_sum,
-#        'item' :item,
-    }
-    return render(request, 'dashboard/reports_casing.html', context)
-
 
 @login_required
 def reports_pcb(request):
@@ -458,7 +429,7 @@ def export_stock_to_csv(request):
     writer = csv.writer(response)
     writer.writerow(['Item Name', 'Stock In', 'Stock Out', 'Inventory', 'Available(%)', 'Units', 'Stock In Date', 'Last Edit', 'Duration(Days)'])
 
-    stocks = Stock.objects.all().order_by('-stock_out_date')
+    stocks = Stock.objects.all()
 
     for stock in stocks:
         if stock.stock_in ==0:
