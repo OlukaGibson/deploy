@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'simple_history',
-    #'import_export',
+    'import_export',
 ]
 
 MIDDLEWARE = [
