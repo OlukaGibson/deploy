@@ -48,7 +48,6 @@ referencing
 reportlab
 requests
 requests-toolbelt
-rpds-py
 setuptools
 shellinghampost
 six
