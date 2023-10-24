@@ -7,7 +7,7 @@ charset-normalizer
 cleo
 colorama
 crashtest
-crispy-bootstrap
+crispy-bootstrap4
 distlib
 dj-database-url
 django-crispy-forms
@@ -15,7 +15,7 @@ django-environ
 dulwich
 filelock
 gunicorn
-htmllib
+html5lib
 idna
 importlib-metadata
 installer
@@ -41,7 +41,7 @@ psycopg2-binary
 ptyprocess
 pypng
 pyproject_hooks
-pywin2-ctypes
+pywin32-ctypes
 qrcode
 rapidfuzz
 referencing
@@ -57,7 +57,7 @@ tomlkit
 trove-classifiers
 typing_extensions
 tzdata
-urllib
+urllib3
 virtualenv
 webencodings
 wheel
