@@ -49,7 +49,7 @@ reportlab
 requests
 requests-toolbelt
 setuptools
-shellinghampost
+shellingham
 six
 sqlparse
 tomlkit
