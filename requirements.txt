@@ -19,7 +19,7 @@ html5lib
 idna
 importlib-metadata
 installer
-jaracoclasses
+jaraco.classes
 jsonschema
 jsonschema-specifications
 keyring
